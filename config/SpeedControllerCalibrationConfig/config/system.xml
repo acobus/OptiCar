@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<adtf:project xmlns:adtf="adtf">
+ <general_settings>
+  <property name="active_configuration" type="String" value="Speed_Controller_Calibration" />
+  <property name="media_description_files" type="String" value="./../description/*.description;./../addons/*/description/*.description;./../src/examples/src/description/*.description;../../../../description/*.description/*.*;../../../description/aadc.description" />
+  <property name="media_description_enable_provide_signals" type="Bool" value="true" />
+  <property name="enable_messagebus" type="Bool" value="true" />
+ </general_settings>
+ <configurations>
+  <configuration description="" name="Speed_Controller_Calibration">
+   <graph>
+    <filter alias="AADC_Watchdog_Trigger" idref="adtf.aadc.watchdogTrigger" priority="2">
+     <settings />
+    </filter>
+    <filter alias="AADC_Car_Control" idref="adtf.aadc.aadc_carControl" priority="3">
+     <settings />
+    </filter>
+    <subgraph alias="Base_Config" idref="Base_Config" priority="1" />
+    <connection connection_priority="50" dest="Base_Config.Watchdog_Alive_Flag" interface="" source="AADC_Watchdog_Trigger.WatchdogAliveSignal" />
+    <connection connection_priority="50" dest="Base_Config.SpeedController" interface="" source="AADC_Car_Control.SpeedController" />
+    <connection connection_priority="50" dest="Base_Config.SteeringController" interface="" source="AADC_Car_Control.SteeringController" />
+   </graph>
+  </configuration>
+ </configurations>
+ <fileinfo adtfversion="2.13.1" configversion="1.3" />
+ <configuration_settings />
+ <plugins>
+  <plugin optional="true" url="../../../bin/Linux/gcc/$(BUILD_TYPE_2)/*.plb" />
+  <plugin optional="true" url="../../../bin/Windows/vc10/$(BUILD_TYPE_2)/*.plb" />
+ </plugins>
+ <adtf_include source="../../BaseConfig/IncludeConfig.xml" />
+</adtf:project>

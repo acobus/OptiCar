@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<adtf:project xmlns:adtf="adtf">
+ <general_settings>
+  <property name="active_configuration" type="String" value="Sensor_Testing" />
+  <property name="media_description_files" type="String" value="./../description/*.description;./../addons/*/description/*.description;./../src/examples/src/description/*.description;../../../../description/*.description/*.*;../../../description/aadc.description" />
+  <property name="media_description_enable_provide_signals" type="Bool" value="true" />
+  <property name="enable_messagebus" type="Bool" value="true" />
+ </general_settings>
+ <configurations>
+  <configuration description="" name="Sensor_Testing">
+   <graph>
+    <filter alias="AADC_Car_Control" idref="adtf.aadc.aadc_carControl" priority="2">
+     <settings />
+    </filter>
+    <filter alias="AADC_Sensor_Analyzer" idref="adtf.aadc.aadc_sensorAnalyzer" priority="3">
+     <settings>
+      <property name="Directory for Sensorpresets" type="String" value="..\..\..\configuration_files\Sensorpresets" />
+     </settings>
+    </filter>
+    <filter alias="AADC_Watchdog_Trigger" idref="adtf.aadc.watchdogTrigger" priority="4">
+     <settings />
+    </filter>
+    <subgraph alias="Base_Config" idref="Base_Config" priority="1" />
+    <connection connection_priority="50" dest="Base_Config.SpeedController" interface="" source="AADC_Car_Control.SpeedController" />
+    <connection connection_priority="50" dest="Base_Config.SteeringController" interface="" source="AADC_Car_Control.SteeringController" />
+    <connection connection_priority="50" dest="Base_Config.reverseLightsEnabled" interface="" source="AADC_Car_Control.reverseLightEnabled" />
+    <connection connection_priority="50" dest="Base_Config.brakeLightEnabled" interface="" source="AADC_Car_Control.brakeLightEnabled" />
+    <connection connection_priority="50" dest="Base_Config.turnSignalRightEnabled" interface="" source="AADC_Car_Control.turnSignalRightEnabled" />
+    <connection connection_priority="50" dest="Base_Config.turnSignalLeftEnabled" interface="" source="AADC_Car_Control.turnSignalLeftEnabled" />
+    <connection connection_priority="50" dest="Base_Config.Watchdog_Alive_Flag" interface="" source="AADC_Watchdog_Trigger.WatchdogAliveSignal" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Front_Left" interface="" source="Base_Config.Ultrasonic_Front_Left" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Front_Center_Left" interface="" source="Base_Config.Ultrasonic_Front_Center_Left" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Front_Center" interface="" source="Base_Config.Ultrasonic_Front_Center" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Front_Center_Right" interface="" source="Base_Config.Ultrasonic_Front_Center_Right" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Front_Right" interface="" source="Base_Config.Ultrasonic_Front_Right" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Side_Left" interface="" source="Base_Config.Ultrasonic_Side_Left" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Side_Right" interface="" source="Base_Config.Ultrasonic_Side_Right" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Rear_Left" interface="" source="Base_Config.Ultrasonic_Rear_Left" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Rear_Center" interface="" source="Base_Config.Ultrasonic_Rear_Center" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Ultrasonic_Rear_Right" interface="" source="Base_Config.Ultrasonic_Rear_Right" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Voltage_Measurement" interface="" source="Base_Config.Voltage_Measurement" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.Voltage_SpeedCntrl" interface="" source="Base_Config.Voltage_SpeedCntrl" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.InerMeasUnit_Struct" interface="" source="Base_Config.InerMeasUnit_Struct" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.WheelLeft_Struct" interface="" source="Base_Config.WheelLeft_Struct" />
+    <connection connection_priority="50" dest="AADC_Sensor_Analyzer.WheelRight_Struct" interface="" source="Base_Config.WheelRight_Struct" />
+    <filter alias="Signal_View" idref="adtf.ui.signal_view" priority="5" />
+    <connection connection_priority="50" dest="Base_Config.headLightEnabled" interface="" source="AADC_Car_Control.headLightEnabled" />
+   </graph>
+  </configuration>
+ </configurations>
+ <fileinfo adtfversion="2.13.1" configversion="1.3" />
+ <configuration_settings />
+ <plugins>
+  <plugin optional="true" url="../../../bin/Linux/gcc/$(BUILD_TYPE_2)/*.plb" />
+  <plugin optional="true" url="../../../bin/Windows/vc10/$(BUILD_TYPE_2)/*.plb" />
+ </plugins>
+ <adtf_include source="../../BaseConfig/IncludeConfig.xml" />
+</adtf:project>

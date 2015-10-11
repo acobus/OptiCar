@@ -1,0 +1,8 @@
+<adtf:export xmlns:adtf="adtf">
+ <folder name="Main">
+  <folder name="components">
+   <folder filter_tree_expanded_list="//AADC_Xtion_Camera" name="FilterTraceView" />
+  </folder>
+  <folder name="windows" />
+ </folder>
+</adtf:export>

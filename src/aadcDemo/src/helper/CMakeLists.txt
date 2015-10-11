@@ -1,0 +1,7 @@
+add_subdirectory(AADC_Visualization)
+add_subdirectory(AADC_CarControl)
+add_subdirectory(AADC_SensorAnalyzer)
+add_subdirectory(AADC_BoolValueGenerator)
+add_subdirectory(AADC_StateController)
+add_subdirectory(AADC_SignalValueGenerator)
+add_subdirectory(AADC_MarkerEvaluator)

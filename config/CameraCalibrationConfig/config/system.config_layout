@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?>
+<adtf:configuration xmlns:adtf="adtf">
+ <ce_layouts>
+  <configuration horizontal_scrollbar_value="1" name="Camera_Calibration" show="true" tab_pos="0" vertical_scrollbar_value="1" zoomfactor="1.000000">
+   <component height="98" name="AADC_Xtion_Camera" width="172" x="184" y="187">
+    <output_pin name="Video_RGB" />
+    <output_pin name="Depth_Image" />
+   </component>
+   <component height="74" name="AADC_Marker_Evaluator" width="172" x="811" y="206">
+    <input_pin name="Road_Sign" />
+   </component>
+   <component height="74" name="AADC_Camera_Calibration" width="172" x="491" y="259">
+    <input_pin name="Video_RGB_input" />
+   </component>
+   <component height="122" name="AADC_Marker_Detection_Filter" width="220" x="483" y="103">
+    <input_pin name="Video_RGB_input" />
+    <output_pin name="Video_RGB_output" />
+    <output_pin name="RoadSign" />
+    <output_pin name="RoadSign_ext" />
+   </component>
+   <component height="50" name="Signal_View" width="172" x="335" y="386" />
+   <component height="98" name="Video_Display" width="172" x="809" y="64">
+    <input_pin name="input" />
+    <input_pin name="gcl_input" />
+    <output_pin name="video_output" />
+   </component>
+   <connection dest="AADC_Camera_Calibration" dest_pin="Video_RGB_input" reldiff="0" shape_type="3" source="AADC_Xtion_Camera" source_pin="Video_RGB" x_p2="368" x_p3="368" x_p4="479" x_p5="479" y_p2="0" y_p3="301" y_p4="301" y_p5="0" />
+   <connection dest="AADC_Marker_Detection_Filter" dest_pin="Video_RGB_input" reldiff="0" shape_type="4" source="AADC_Xtion_Camera" source_pin="Video_RGB" x_p2="368" x_p3="368" x_p4="471" x_p5="471" y_p2="0" y_p3="145" y_p4="145" y_p5="0" />
+   <connection dest="AADC_Marker_Evaluator" dest_pin="Road_Sign" reldiff="0" shape_type="3" source="AADC_Marker_Detection_Filter" source_pin="RoadSign" x_p2="764" x_p3="764" x_p4="799" x_p5="799" y_p2="0" y_p3="248" y_p4="248" y_p5="0" />
+   <connection dest="Video_Display" dest_pin="input" reldiff="0" shape_type="4" source="AADC_Marker_Detection_Filter" source_pin="Video_RGB_output" x_p2="760" x_p3="760" x_p4="797" x_p5="797" y_p2="0" y_p3="106" y_p4="106" y_p5="0" />
+  </configuration>
+ </ce_layouts>
+</adtf:configuration>

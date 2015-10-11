@@ -1,0 +1,24 @@
+<adtf:export xmlns:adtf="adtf">
+ <folder name="Sensor_Testing">
+  <folder name="components">
+   <folder filter_tree_expanded_list="//Base_Config-AADC_Arduino_Sensors" name="FilterTraceView" />
+  </folder>
+  <folder name="windows">
+   <folder Height="325" PosX="778" PosY="19" Visible="true" Width="700" name="AADC_Car_Control" />
+   <folder Height="598" Visible="true" Width="418" name="AADC_Sensor_Analyzer" />
+   <folder Height="387" Visible="false" Width="774" name="Signal_View" />
+  </folder>
+ </folder>
+ <folder name="Live_Visualization">
+  <folder name="components">
+   <folder name="FilterTraceView" />
+  </folder>
+  <folder name="windows">
+   <folder Height="596" PosX="151" PosY="47" Visible="true" Width="978" name="AADC_Visualization" />
+   <folder Height="212" Width="312" name="Signal_View" />
+   <folder Height="253" Width="608" name="AADC_Car_Control" />
+   <folder Height="572" Width="792" name="Video_Display" />
+   <folder Height="572" PosX="476" PosY="153" Width="792" name="Video_Display2" />
+  </folder>
+ </folder>
+</adtf:export>
